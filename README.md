@@ -19,6 +19,12 @@ archived under [`circuitpython/`](circuitpython/).
   bootloader (UF2 mass storage) so the device can be reflashed without pressing
   BOOTSEL.
 
+## Photos
+
+<img src="docs/keypad-front.jpg" alt="Front of the assembled keypad" width="380">
+
+<img src="docs/keypad-internals.jpg" alt="Inside the keypad: the Raspberry Pi Pico and the 5x5 matrix wiring" width="600">
+
 ## Keymap
 
 Single layer, matching the old keymap in [`circuitpython/code.py`](circuitpython/code.py).
@@ -71,4 +77,4 @@ To build and flash straight over USB:
 - `vial.json` – Vial definition for live remapping
 - `build.rs`, `memory.x`, `.cargo/config.toml`, `Makefile.toml` – RP2040 build glue
 - `circuitpython/` – the original CircuitPython/KMK firmware (archived)
-- `docs/grid-keypad.png` – a photo of the keypad
+- `docs/` – photos (`grid-keypad.png`, `keypad-front.jpg`, `keypad-internals.jpg`)
