@@ -1,0 +1,7 @@
+# macOS / FAT volume metadata
+._*
+.DS_Store
+.Trashes
+.fseventsd/
+.TemporaryItems/
+~1.MET
