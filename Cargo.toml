@@ -1,0 +1,56 @@
+[package]
+name = "grid-keypad"
+version = "0.1.0"
+edition = "2024"
+description = "GRiD 1500 Series numeric keypad firmware (Rust + RMK)"
+license = "MIT OR Apache-2.0"
+
+[[bin]]
+name = "grid-keypad"
+test = false
+bench = false
+
+[dependencies]
+# Pin to the exact RMK main commit whose example this firmware mirrors.
+# The released `rmk` crate on crates.io (0.9.0) is older than this and uses a
+# different configuration API, so we pin the git revision for a reproducible build.
+rmk = { git = "https://github.com/rmk-rs/rmk", rev = "84fd2e4f3bcc35942cdfbb72ad590716e36583d5", features = ["rp2040"] }
+
+embassy-executor = { version = "0.10", features = [
+    "defmt",
+    "platform-cortex-m",
+    "executor-thread",
+] }
+embassy-rp = { version = "0.10", features = [
+    "rp2040",
+    "defmt",
+    "time-driver",
+    "critical-section-impl",
+] }
+embassy-time = { version = "0.5", features = ["defmt"] }
+
+cortex-m-rt = "0.7.5"
+defmt = "1"
+defmt-rtt = "1"
+panic-probe = { version = "1", features = ["print-defmt"] }
+portable-atomic = { version = "1", features = ["critical-section"] }
+
+[build-dependencies]
+const-gen = "1.6"
+json = "0.12"
+xz2 = "0.1.7"
+
+[profile.dev]
+codegen-units = 1
+debug = true
+opt-level = 1
+overflow-checks = true
+lto = false
+panic = 'unwind'
+
+[profile.release]
+codegen-units = 1
+debug = true
+opt-level = "z"
+overflow-checks = false
+lto = "fat"

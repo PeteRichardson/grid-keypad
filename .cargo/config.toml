@@ -1,0 +1,12 @@
+[target.'cfg(all(target_arch = "arm", target_os = "none"))']
+# USB flashing without a debug probe: hold the red button + plug in, then `cargo run --release`.
+runner = "elf2uf2-rs -d"
+
+# Use flip-link overflow check: https://github.com/knurling-rs/flip-link
+linker = "flip-link"
+
+[build]
+target = "thumbv6m-none-eabi" # Cortex-M0 and Cortex-M0+
+
+[env]
+DEFMT_LOG = "debug"

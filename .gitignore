@@ -5,3 +5,8 @@
 .fseventsd/
 .TemporaryItems/
 ~1.MET
+
+# Rust build artifacts
+/target/
+grid.hex
+grid.uf2
